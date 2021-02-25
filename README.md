@@ -23,7 +23,7 @@ algorithm_design/# Root directory.
 ```
 
 ### References
-Foundations of Algorithms, 5th Ed. - Richard E. Neapolitan.
+Foundations of Algorithms, 5th Ed. - Richard E. Neapolitan.\n
 Introduction to Algorithms, 3rd Ed. - Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein.
 
 
