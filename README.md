@@ -13,7 +13,7 @@ The following language versions are required:
 
 ### Directory structure
 ```
-algorithm_design/# Root directory.
+algorithm_design/         # Root directory.
 |- sorting/               # Sorting alrogithms.
 |- mult/                  # Algorithms for large number multiplication.
 |- nets/                  # Graph/network algorithms.
