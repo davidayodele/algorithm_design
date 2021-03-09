@@ -73,13 +73,19 @@ if __name__ == '__main__':
             [6, 8, INT_MAX, INT_MAX, 9], 
             [INT_MAX, 5, 7, 9, INT_MAX]]
 
-    matx = [[0]*(len(data) - 2) for col in range(len(data[0]))]
+    matx = [[0]*(len(data[0])) for cell in range(len(data) - 2)]
 
-    for row in data:
-        for col in row:
-            for index, val in enumerate(matx):
-                while col == index:
-                    matx[col] = val 
+    for matx_cell in range(len(matx)):
+        for matx_row in range(len(matx[0])):            
+            for row in range(1, len(data[0])): # avoid 1st row of text
+                if int(data[row][0]) == matx_row:
+                    print(int(data[row][0]))
+            #matx[matx_row][matx_cell] = data[row][0]
+            #if data[row][0] == matx_row:
+            #    for cell in range(len(data[0]) - 2):
+            #        if data[row][1] == matx_cell:
+            #            matx[matx_row][matx_cell] = data[row][2]
+                        
     print(matx)
     # Print the solution
 
@@ -87,4 +93,5 @@ if __name__ == '__main__':
 
     #cwd = os.getcwd()
     #print(cwd)
-    print(data[1][4])
+    print(data[1][0])
+
