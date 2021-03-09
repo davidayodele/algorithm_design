@@ -7,15 +7,16 @@ https://www.geeksforgeeks.org/prims-algorithm-simple-implementation-for-adjacenc
 
 import csv
 import os
+from sys import maxsize
 
 datafile = 'quiz6/Quiz6_Input_File.csv'
 
 data = list(csv.reader(open(datafile)))
 
-from sys import maxsize
 INT_MAX = maxsize
-V = 5
 
+#V = 5
+#V = len(data)
 
 # Returns true if edge u-v is a valid edge to be
 # include in MST. An edge is valid if one end is
@@ -32,6 +33,7 @@ def is_edge(u, v, MST):
 
 
 def prim(cost):
+    V = len(cost)
     MST = [False] * V
 
     # Initialize at 0
@@ -66,32 +68,40 @@ def prim(cost):
 # Main
 if __name__ == '__main__':
 
-
     cost = [[INT_MAX, 2, INT_MAX, 6, INT_MAX], 
             [2, INT_MAX, 3, 8, 5],
             [INT_MAX, 3, INT_MAX, INT_MAX, 7], 
             [6, 8, INT_MAX, INT_MAX, 9], 
             [INT_MAX, 5, 7, 9, INT_MAX]]
 
-    matx = [[0]*(len(data[0])) for cell in range(len(data) - 2)]
+    matx = []
+    matx_col = []
 
-    for matx_cell in range(len(matx)):
-        for matx_row in range(len(matx[0])):            
-            for row in range(1, len(data[0])): # avoid 1st row of text
-                if int(data[row][0]) == matx_row:
-                    print(int(data[row][0]))
-            #matx[matx_row][matx_cell] = data[row][0]
-            #if data[row][0] == matx_row:
-            #    for cell in range(len(data[0]) - 2):
-            #        if data[row][1] == matx_cell:
-            #            matx[matx_row][matx_cell] = data[row][2]
-                        
+    for col in range(1, len(data)): # initialize column with 0s, must be length of data col
+            matx_col.append(INT_MAX) # change to 0 for Dij
+    for row in range(0, len(data[0]) - 2): # append the column to each row, only need idices & weight
+        matx.append(matx_col)
+            
+    row = 1  # avoid header row    
+    for matx_row in range(len(matx)):
+        while int(data[row][0]) == matx_row:
+            link = int(data[row][1])
+            weight = int(data[row][2])
+            #print(link)
+            #print(weight) # will be used as col index
+            matx[matx_row][link] = weight
+            row = row + 1
+
+    # Print the matrix/list                        
     print(matx)
+    
+    
     # Print the solution
-
-    prim(cost)
+    #prim(cost)
+    prim(matx)
 
     #cwd = os.getcwd()
     #print(cwd)
-    print(data[1][0])
+    #print(data[1][0])
+    #print(matx[1][1])
 
