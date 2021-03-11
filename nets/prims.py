@@ -31,7 +31,6 @@ def is_edge(u, v, MST):
         return False
     return True
 
-
 def prim(cost):
     V = len(cost)
     MST = [False] * V
@@ -77,27 +76,24 @@ if __name__ == '__main__':
     matx = []
     matx_col = []
 
-    for col in range(1, len(data)): # initialize column with 0s, must be length of data col
-            matx_col.append(INT_MAX) # change to 0 for Dij
-    for row in range(0, len(data[0]) - 2): # append the column to each row, only need idices & weight
+    for col in range(1, len(data)):             # initialize column with 0s, must be length of data col
+        matx_col.append(INT_MAX)                # change to 0 for Dij
+    for row in range(0, len(data[0]) - 2):      # append the column to each row, only need idices & weight
         matx.append(matx_col)
             
-    row = 1  # avoid header row    
+    row = 1                                     # avoid header row    
     for matx_row in range(len(matx)):
         while int(data[row][0]) == matx_row:
             link = int(data[row][1])
             weight = int(data[row][2])
             #print(link)
-            #print(weight) # will be used as col index
+            #print(weight)                      # will be used as col index
             matx[matx_row][link] = weight
             row = row + 1
 
-    # Print the matrix/list                        
-    print(matx)
-    
-    
-    # Print the solution
-    #prim(cost)
+    print(matx)                                 # Print the matrix/list                        
+                                    
+    #prim(cost)                                 # Print the solution
     prim(matx)
 
     #cwd = os.getcwd()
