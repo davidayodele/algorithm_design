@@ -19,8 +19,16 @@ class k_means:
         return centroids
 
     def make_clusters(self, data, centroids):
-        clusters = [[] for count in range(self.K)] # init empty clusters
-
+        clusters = [[] for cluster in range(self.K)] # init empty array of clusters
+        # the number of arrays embedded in the outer array will depend on K
+        
+        for idx, point in enumerate(data): # each point will be a 2-tuple
+            # data has 3 cols (X, Y, Feature)
+            centroid_distances = np.sqrt(np.sum( (point - centroids)**2, axis=1) ) # creates Kx2 array of point-centroid distances
+            # numpy will take each point (X,Y) then subtract it from each centroid, then square the result, then sum the y vals (axis=1). 
+            # We then loop to next point
+            
+            nearest_centroid = np.argmin(centroid_distances)
     
     def calc_centroids(self, clusters, data):
         pass
