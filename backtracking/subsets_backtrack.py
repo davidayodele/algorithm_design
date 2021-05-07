@@ -12,6 +12,26 @@ References:
 [4] https://www.youtube.com/watch?v=s7AvT7cGdSo
 '''
 
+# change the n on each iteration
+# keep calling yourself until the list contains all members of the set.
+# then check if the list contains an element not in the set
+# if the contition succeeds, remove the number
+
+# by default, the next number will be tried and the checks will be attempted again
+# this will continue in reverse order until the list is filled with the maximum number of step sizes summing to N, starting with 1
+
+def subsets(N, item, arr):
+    if (subset in arr):
+        return
+
+    for item in range(N):
+        arr.append(item)
+        subsets(N, item, arr)
+        arr.remove(item)   
+
+arr = []
+subsets(5, 1, arr)
+
 # since for any binary string of length n, we can use it to store 2^n values [1] 
 # we recognize that we can simply pick all bits that are "1" or "0" and 
 # link these to the original set elements to yield the powerset (this does not backtrack)
@@ -20,10 +40,10 @@ def powerset(s):
     s_len = len(s)
     count = 0
     for i in range(1, 1 << s_len): # generates masks for combinations, same as range(1, 2**s_len)
-        print [s[j] for j in range(s_len) if i & 1 << j] # computes combinations using bitwise "AND" and stores them as sets of s 
+        print([s[j] for j in range(s_len) if i & 1 << j]) # computes combinations using bitwise "AND" and stores them as sets of s 
         count += 1        
-    print count
-    print ("============")
+    print(count)
+    print("============")
 
 
 
