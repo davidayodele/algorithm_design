@@ -2,9 +2,8 @@
 class node:
     # self (can technically be any word) is used bc in Python, the instance of a method is passed but not sutomatically received
     def __init__(self, data = None): # constructor with self as 1st arg, initializes data to null
-        self.data = data # creates var to store data
-        self.nex = None # creates var to store something (allows it to store nodes)
-
+        self.data = data 
+        self.nex = None 
 
 class link_list:
     def __init__(self, data=None): # constructor will be initialized with another class (node) to create a chain of nodes
